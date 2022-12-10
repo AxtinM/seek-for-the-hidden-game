@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Pickable : MonoBehaviour
     private bool pickedUp = false;
 
     public InventoryController inventory;
+
+    public string objName;
 
 
     private void Update()

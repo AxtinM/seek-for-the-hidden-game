@@ -7,10 +7,13 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     private ArrayList items;
+    public Pickable[] itemsToCollect;
     // Start is called before the first frame update
     void Start()
     {
         items = new ArrayList();
+        itemsToCollect = FindObjectsOfType<Pickable>();
+        Debug.Log("Object's name : " + itemsToCollect[0].objName);
     }
 
      void Update()
