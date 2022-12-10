@@ -12,18 +12,16 @@ public class Pickable : MonoBehaviour
 
     private bool pickedUp = false;
 
+    public InventoryController inventory;
+
 
     private void Update()
     {
-        bool isCameraPointingAtObject = CamIsPointingAtObject();
          
-        if (isCameraPointingAtObject & Input.GetKey(KeyCode.E) & inRange)
+        if (Input.GetKey(KeyCode.E) & inRange)
         {
             pickup();
-
         }
-        
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,7 +40,12 @@ public class Pickable : MonoBehaviour
 
     private void pickup()
     {
-        Debug.Log("Pickup");
+        bool isCameraPointingAtObject = CamIsPointingAtObject();
+        if(isCameraPointingAtObject)
+        {
+            inventory.PutInInventory(gameObject);
+            Destroy(gameObject);
+        }
     }
 
    private bool CamIsPointingAtObject()
